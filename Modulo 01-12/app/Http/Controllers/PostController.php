@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -11,9 +12,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return $id;
+        $posts = Post::all();
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -23,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -33,8 +35,14 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+      // return $request->all();
+       //Post::create($request->all());
+       $post = new Post();
+        $post->title = $request->title;
+        $post->content = isset($request->content) ? $request->content :"Lorem ipsum ipsum";
+        $post->save();
+        return redirect('/posts');
     }
 
     /**
@@ -45,7 +53,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return "show" ;
+        $post = Post::findOrFail($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -56,7 +65,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit',compact('post'));
+
     }
 
     /**
@@ -68,7 +79,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      // return $request->all();
+      $post = Post::findOrFail($id);
+      $post->update($request->all());
+        return redirect('posts');
+
     }
 
     /**
@@ -79,7 +94,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/posts');
     }
 
     public function contact(){

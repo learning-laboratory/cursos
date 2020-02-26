@@ -232,10 +232,16 @@ Route::get('/post/tag',function (){
 		echo $tag->name."<br>";
 	}
 });
-*/
+*//*
 Route::get('/tag/post', function(){
 	$tag = Tag::find(1);
 	foreach ($tag->posts as $post) {
 		echo $post->title."<br>";	
 	}
-});
+});*/
+/*
+|--------------------------------------------------------------------------
+| CRUD Aplication
+|----------- ---------------------------------------------------------------
+*/
+Route::resource('/posts','PostController');
