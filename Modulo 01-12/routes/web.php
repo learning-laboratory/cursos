@@ -46,11 +46,11 @@ Route::get('admin/posts/example',array('as'=>'admin.home',function(){
 | DATABASE Raw SQL Queries
 |--------------------------------------------------------------------------
 */
-
+/*
 Route::get('/insert',function(){
 	DB::insert('insert into posts(title,content) values(?,?)', ['Javaa with Hibernate','Hibernate is the best framework of java']);
 });
-
+*/
 /*
 Route::get('/read',function(){
 	$results = DB::select('select * from posts where id = ?',[1]);
@@ -244,4 +244,11 @@ Route::get('/tag/post', function(){
 | CRUD Aplication
 |----------- ---------------------------------------------------------------
 */
-Route::resource('/posts','PostController');
+
+Route::group(['middleware'=>'web'],function(){
+	Route::resource('/posts','PostController');
+});
+
+
+
+
