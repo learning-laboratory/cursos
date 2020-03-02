@@ -28,5 +28,9 @@ class Post extends Model{
     	return $this->morphToMany('App\Tag','taggables');
     }
 
+    public static function scopeLates($query)
+    {
+        return $query->orderBy('id','asc')->get(); 
+    }
 
 }

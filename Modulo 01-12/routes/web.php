@@ -246,9 +246,29 @@ Route::get('/tag/post', function(){
 */
 
 Route::group(['middleware'=>'web'],function(){
+	
 	Route::resource('/posts','PostController');
+	
+	Route::get('/dates',function(){
+		$date = new DateTime();
+		echo $date->format('d-m-Y');
+		echo "<br>";
+		echo Carbon\Carbon::now()->diffForHumans();
+		echo Carbon\Carbon::now()->subMonths();
+		echo Carbon\Carbon::now()->yesterday();
+	});
+
+	Route::get('/getname',function(){
+		$user = User::find(1);
+		echo $user->getNameAttribute($user->name);
+	});
+
+	Route::get('/setname',function(){
+		$user = User::find(1);
+		$user->name = 'Jonh Trigger';
+		$user->save();
+	});
+
 });
 
-
-
-
+ 
