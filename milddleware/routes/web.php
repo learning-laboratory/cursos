@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    $user = Auth::user();
+    return $user->isAdmin == true ? "Is admin": "is not admin";
 });
+
+Route::auth();
+
+Route::get('/home','HomeController@index');
+
+Route::get('/admin/user/roles',['middleware'=>'role',function(){
+	return "middleware role";
+}]);
