@@ -17,6 +17,7 @@ Route::get('/', function () {
     return $user->isAdmin == true ? "Is admin": "is not admin";
 });
 
+
 Route::auth();
 
 Route::get('/home','HomeController@index');
@@ -24,3 +25,5 @@ Route::get('/home','HomeController@index');
 Route::get('/admin/user/roles',['middleware'=>'role',function(){
 	return "middleware role";
 }]);
+
+Route::get('/admin','AdminController@index');
