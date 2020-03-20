@@ -18,6 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/libs/blog-post.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/libs/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/libs/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/libs/metisMenu.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/libs/sb-admin-2.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/libs/styles.css">
 </head>
 <body>
     <div id="app">
@@ -76,5 +83,13 @@
             @yield('content')
         </main>
     </div>
+    <script type="text/javascript" src="/assets/js/libs/jquery.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/popper.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/bootstrap.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/metisMenu.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/sb-admin-2.js"></script>
+    <script type="text/javascript" src="/assets/js/libs/script.js"></script>
+
+
 </body>
 </html>
