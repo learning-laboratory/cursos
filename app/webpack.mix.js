@@ -12,8 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .css('resources/assets/libs/blog-post.css','public/css')
+    .sass('resources/sass/app.scss', 'public/css');
+/*    .css('resources/assets/libs/blog-post.css','public/css')
     .css('resources/assets/libs/bootstrap.css','public/css')
     .css('resources/assets/libs/font-awesome.css','public/css')
     .css('resources/assets/libs/metisMenu.css','public/css')
@@ -22,7 +22,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/assets/libs/jquery.js','public/js')
     .js('resources/assets/libs/popper.js','public/js')
     .js('resources/assets/libs/bootstrap.js','public/js');
-
+*/
     /*mix.styles([
 		'public/css/vendor/normalize.css',
 		'public/css/vendor/videojs.css'
