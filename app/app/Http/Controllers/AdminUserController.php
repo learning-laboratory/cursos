@@ -40,8 +40,13 @@ class AdminUserController extends Controller
     public function store(UsersRequest $request)
     {
        $input = $request->all();
-       if ($request->file('photo_id')) {
-            return "My photo";    
+
+       if ($file = $request->file('photo_id')) {
+
+          $name = time().$file->getClientOriginalName();   
+          $file->move('images',$name);
+          $photo = Photo::create('file' => $name);
+          $input['photo_id'] = $photo->id;
        }
 
        User::create($request->all());
