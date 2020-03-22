@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UsersRequest;
 use App\User;
 use App\Role;
-use App\Http\Requests\UsersRequest;
+use App\Photo;
 
 class AdminUserController extends Controller
 {
@@ -45,11 +46,13 @@ class AdminUserController extends Controller
 
           $name = time().$file->getClientOriginalName();   
           $file->move('images',$name);
-          $photo = Photo::create('file' => $name);
+          $photo = Photo::create(['file' => $name]);
           $input['photo_id'] = $photo->id;
        }
 
-       User::create($request->all());
+       $input['password'] = bcrypt($request->password);
+       User::create($input);
+
        return redirect('/admin/users');
     }
 
