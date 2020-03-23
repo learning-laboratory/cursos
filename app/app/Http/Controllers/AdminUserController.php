@@ -52,7 +52,6 @@ class AdminUserController extends Controller
 
        $input['password'] = bcrypt($request->password);
        User::create($input);
-
        return redirect('/admin/users');
     }
 
@@ -75,7 +74,9 @@ class AdminUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::pluck('name','id')->all();
+        return view('admin.users.edit',compact('user','roles'));
     }
 
     /**
