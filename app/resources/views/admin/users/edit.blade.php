@@ -7,7 +7,7 @@
 @include('includes.form_errors')	
 
 <div class="col-sm-3">
-	<img src="{{$user->photo ? $user->file : 'http:://placehold.it/400x400'}}" class="img-responsive img-rounded">
+	<img src="{{$user->photo ? $user->photo->file : 'http:://placehold.it/400x400'}}" class="img-responsive img-rounded">
 </div>
 <div class="col-sm-9">
 {!! Form::model($user,['method'=>'PATCH','action'=>['AdminUserController@update',$user->id],'files'=>true]) !!}
@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::submit('Update',['class'=>'btn btn-success']) !!}
+		{!! Form::submit('Update',['class'=>'btn btn-info']) !!}
 	</div>
 
 {!! Form::close() !!}
