@@ -2,8 +2,14 @@
 
 @section('content')
 
-<h1>Create Users</h1>
+<h1>Edit Users</h1>
 
+@include('includes.form_errors')	
+
+<div class="col-sm-3">
+	<img src="{{$user->photo ? $user->file : 'http:://placehold.it/400x400'}}" class="img-responsive img-rounded">
+</div>
+<div class="col-sm-9">
 {!! Form::model($user,['method'=>'PATCH','action'=>['AdminUserController@update',$user->id],'files'=>true]) !!}
 	<div class="form-group">
 		{!! Form::label('name','Name:') !!}
@@ -22,7 +28,7 @@
 
 	<div class="form-group">
 		{!! Form::label('is_active','Status:') !!}
-		{!! Form::select('is_active',array(1=>'Active',0=>'Not Active'),0,['class'=>'form-control']) !!}
+		{!! Form::select('is_active',array(1=>'Active',0=>'Not Active'),null,['class'=>'form-control']) !!}
 	</div>
 
 
@@ -37,13 +43,10 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::submit('Create User',['class'=>'btn btn-success']) !!}
+		{!! Form::submit('Update',['class'=>'btn btn-success']) !!}
 	</div>
 
 {!! Form::close() !!}
-
-@include('includes.form_errors')
-
-
+</div>
 
 @endsection
