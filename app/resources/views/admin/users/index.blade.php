@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+	
+	@if(Session::has('deleted_user'))
+		<p class="bg-success" style="padding: 10px; border-radius: 10px;">{{ session('deleted_user') }}</p>
+	@endif
+	
 	<h1>Users</h1>
 	<table class="table">
 		<thead>
@@ -12,7 +17,8 @@
 				<th>Role</th>
 				<th>Status</th>
 				<th>Created</th>
-				<th>Updated</th>
+				<th>Action</th>
+
 			</tr>
 		</thead>
 		<tbody>
