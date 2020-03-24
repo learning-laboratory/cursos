@@ -25,8 +25,8 @@ class PostCreateRequest extends FormRequest
     {
         return [
             'title'         => 'required',
-         //   'categoey_id'   => 'required',
-            'photo_id'      => 'required',
+            'categoey_id'   => 'required',
+           //'photo_id'      => 'required',
             'body'          => 'required'
         ];
     }
