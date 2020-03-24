@@ -11,6 +11,7 @@
 </div>
 <div class="col-sm-9">
 {!! Form::model($user,['method'=>'PATCH','action'=>['AdminUserController@update',$user->id],'files'=>true]) !!}
+	
 	<div class="form-group">
 		{!! Form::label('name','Name:') !!}
 		{!! Form::text('name',null,['class'=>'form-control']) !!}

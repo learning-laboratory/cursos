@@ -26,9 +26,9 @@ class EditUsersRequest extends FormRequest
         return [
             'name'      =>  'required',
             'email'     =>  'required',
-            'role_id'   =>  'required',
-            'is_active' =>  'required',
-            'password'  =>  'required'
+            'role_id'   =>  'required'
+            //'is_active' =>  'required',
+            //'password'  =>  'required'
         ];
     }
 }
