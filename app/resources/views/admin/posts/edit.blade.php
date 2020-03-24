@@ -3,6 +3,16 @@
 @section('content')
 
 	<h1>Edt Posts</h1>
+    <div class="row">
+
+        <div class="col-sm-3">
+
+            <img src="{{$post->photo ? $post->photo->file : $post->photoPlaceholder()}}" alt="" class="img-responsive">
+             
+            </div>
+
+        <div class="col-sm-9">
+
 	@include('includes.form_errors')
 	{!! Form::model($post,['method'=>'PATCH','action'=>['AdminPostsController@update',$post->id],'files'=>true]) !!}
 		
@@ -32,5 +42,13 @@
 		</div>
 
 	{!! Form::close() !!}
+
+	{!! Form::open(['method'=>'DELETE','action'=>['AdminPostsController@destroy',$post->id]]) !!}
+		<div class="form-group">
+			{!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
+		</div>
+	{!! Form::close() !!}
+</div>
+</div>
 
 @endsection
