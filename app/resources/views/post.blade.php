@@ -30,19 +30,31 @@
     <!-- Post Content -->
     <p>{{$post->body}}</p>
 
-    <hr>
+    <hr>ec
 
     <!-- Blog Comments -->
 
     <!-- Comments Form -->
+    @if(Session::has('comment_message'))
+        <div class="alert alert-success" style="border-radius: 10px;">
+            {{session('comment_message')}}
+        </div>
+    @endif
     <div class="well">
         <h4>Leave a Comment:</h4>
-        <form role="form">
+        {!! Form::open(['method'=>'POST','action'=>'PostCommentController@store']) !!}
+            <input type="hidden" name="post_id" value="{{$post->id}}">
             <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                {!! Form::label('body','Body:') !!}
+                {!! Form::textarea('body',null,['class'=>'form-control']) !!}
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+
+            <div class="form-group">
+                {!! Form::submit('Submi comment',['class'=>'btn btn-info']) !!}
+            </div>
+
+        {!! Form::close() !!}
+
     </div>
 
     <hr>
