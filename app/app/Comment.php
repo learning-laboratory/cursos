@@ -18,4 +18,14 @@ class Comment extends Model
     {
     	return $this->hasMany('App\CommentReply');
     }
+
+    public function post()
+    {
+    	return $this->belongsTo('App\Post');
+    }
+    /*
+    public function getTitlePost()
+    {
+    	return Post::findOrFail($this->post_id)->title;
+    }*/
 }
