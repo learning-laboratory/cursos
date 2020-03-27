@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 	protected $fillable = [
-		'post_id',
+		
+        'post_id',
+        'is_active',
 		'author',
+        'photo',
 		'email',
-		'body',
-		'is_active'
+		'body'
+		
 	];
 	
     public function replies()

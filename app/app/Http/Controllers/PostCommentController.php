@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Comment;
 use App\User;
 use App\Photo;
+use App\Post;
 
 class PostCommentController extends Controller
 {
@@ -39,8 +40,9 @@ class PostCommentController extends Controller
      */
     public function store(Request $request)
     {
+        
         $user = Auth::user();
-
+        
         $data = [
             'post_id'    => $request->post_id,
             'author'     => $user->name,
@@ -62,7 +64,9 @@ class PostCommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $comments = $post->comments;
+        return view('admin.comments.show',compact('comments'));
     }
 
     /**
