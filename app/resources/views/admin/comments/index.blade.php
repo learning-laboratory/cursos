@@ -12,6 +12,7 @@
 				<th>Email</th>
 				<th>Body</th>
 				<th>Post</th>
+				<th>Replies</th>
 				<th  colspan="2">Actions</th>
 			</tr>
 		</thead>	
@@ -24,6 +25,10 @@
 						<td>{{$comment->email}}</td>
 						<td>{{$comment->body}}</td>
 						<td><a href="{{route('home.post',$comment->post_id)}}">{{$comment->post->title}}</a></td>
+						<td>
+							<a href="{{route('replies.show',$comment->id)}}">View replies</a>
+						</td>
+						
 						<td>
 							@if($comment->is_active == 1)
 								{!! Form::model($comment,['method'=>'PATCH','action'=>['PostCommentController@update',$comment->id]]) !!}
@@ -43,10 +48,12 @@
 						</td>
 						<td>
 							{!! Form::model($comment,['method'=>'DELETE','action'=>['PostCommentController@destroy',$comment->id]]) !!}
-									<div class="form-group">
-										{!! Form::submit('delete',['class'=>'btn btn-danger']) !!}
-									</div>
-								{!! Form::close() !!}</td>
+								<div class="form-group">
+									{!! Form::submit('delete',['class'=>'btn btn-danger']) !!}
+								</div>
+							{!! Form::close() !!}
+						</td>
+			
 					</tr>
 				@endforeach
 			@endif 
