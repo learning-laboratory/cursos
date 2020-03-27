@@ -11,3 +11,11 @@ body {
 footer {
     margin: 50px 0;
 }
+/***************** Comment *************/
+#nested-comment{
+	margin-top: 60px;
+}
+
+.comment-reply{
+	display: none;
+}

@@ -18,8 +18,9 @@ class CreateCommentRepliesTable extends Migration
             $table->unsignedBigInteger('comment_id');
             $table->integer('is_active')->default(0);
             $table->string('author');
+            $table->string('photo')->default("");
             $table->string('email');
-            $table->text('comment');
+            $table->text('body');
             $table->timestamps();
 
            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');

@@ -40,9 +40,9 @@ class PostCommentController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $user = Auth::user();
-        
+
         $data = [
             'post_id'    => $request->post_id,
             'author'     => $user->name,
@@ -104,5 +104,6 @@ class PostCommentController extends Controller
          Comment::findOrFail($id)->delete();
         return redirect('/admin/comments');
     }
+
 }
 
