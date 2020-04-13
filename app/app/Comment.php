@@ -6,16 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-	protected $fillable = [
-		
-        'post_id',
-        'is_active',
-		'author',
-        'photo',
-		'email',
-		'body'
-		
-	];
+    protected $fillable = [ 'post_id','is_active','author','photo','email','body' ];
 	
     public function replies()
     {
@@ -26,9 +17,9 @@ class Comment extends Model
     {
     	return $this->belongsTo('App\Post');
     }
-    /*
-    public function getTitlePost()
-    {
-    	return Post::findOrFail($this->post_id)->title;
-    }*/
+
+    public function getPhotoProfile(){
+        return $this->photo ? $this->photo :"/images/user.jpg";          
+    }
+
 }

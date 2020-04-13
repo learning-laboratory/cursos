@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsersRequest;
+use App\Http\Requests\EditUsersRequest;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\Role;
@@ -42,7 +43,7 @@ class AdminUserController extends Controller
     public function store(UsersRequest $request){
 
         if (trim($request->password) == '') {
-            $input = $request->execept('password');
+            $input = $request->except('password');
         }else{
             $input = $request->all();
             $input['password'] = bcrypt($request->password);   
@@ -57,7 +58,9 @@ class AdminUserController extends Controller
        }
 
        $input['password'] = bcrypt($request->password);
+
        User::create($input);
+       Session::flash('created_user','Usuário adicionado.');
        return redirect('/admin/users');
     }
 
@@ -92,12 +95,12 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UsersRequest $request, $id)
+    public function update(EditUsersRequest $request, $id)
     {
         $user = User::findOrFail($id);
         
         if (trim($request->password) == '') {
-            $input = $request->execept('password');
+            $input = $request->except('password');
         }else{
             $input = $request->all();
             $input['password'] = bcrypt($request->password);   
@@ -114,6 +117,7 @@ class AdminUserController extends Controller
         }
 
         $user->update($input);
+        Session::flash('updated_user','Usuário actualizado.');
         return redirect('admin/users');
     }
 
@@ -126,11 +130,11 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        unlink(public_path().$user->photo->file);
-
+        if ($user->photo) {
+            unlink(public_path().$user->photo->file);
+        }
         $user->delete();
-
-        Session::flash('deleted_user','The user has been deleted');
+        Session::flash('deleted_user','Usuário removido.');
         return redirect('/admin/users');
     }
 }

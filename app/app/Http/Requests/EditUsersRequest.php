@@ -27,8 +27,15 @@ class EditUsersRequest extends FormRequest
             'name'      =>  'required',
             'email'     =>  'required',
             'role_id'   =>  'required'
-            //'is_active' =>  'required',
-            //'password'  =>  'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required'      => 'Insira o nome.',
+            'email.required'     => 'Insira o email.',
+            'role_id.required'   => 'Selecione a função.'
         ];
     }
 }

@@ -16,10 +16,26 @@ use App\User;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/sync',function(){
+	
+	$user = User::findOrFail(5);
+	$user->roles()->detach([1,2]);
+
+});
+
 
 Route::get('/create',function(){
-	$user = User::find(4);
-	$user->roles()->save(new Role(['name'=>'administrator']));
+	$user = new User();
+
+	$user1 = $user->create(['name'=>'MANUEL','email'=>'MAMA@gmail.com','password'=>'1234']);
+	$roles = Role::all();
+	//foreach ($roles as $role) {
+		//echo $roles[1]->name;
+	//	$user1->roles()->save(1);
+		$user1->roles()->attach([1,2]);
+	//}
+	//$user = User::find(4);
+	//$user1->roles()->save([$role]);
 });
 
 Route::get('/read',function(){
@@ -33,7 +49,7 @@ Route::get('/read',function(){
 Route::get('/attach',function(){
 	
 	$user = User::findOrFail(1);
-	$user->roles()->detach(6);
+	$user->roles()->attach(6);
 
 });
 
@@ -45,12 +61,6 @@ Route::get('/detach',function(){
 
 });
 
-Route::get('/sync',function(){
-	
-	$user = User::findOrFail(1);
-	$user->roles()->sync([1,2]);
-
-});
 
 
 Route::get('/update',function(){

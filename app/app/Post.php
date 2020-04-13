@@ -2,24 +2,29 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model{
 
-    protected $fillable = [
-    	'user_id',
-    	'category_id',
-    	'photo_id',
-    	'title',
-    	'body'
-    ];
+class Post extends Model
+{
+    use Sluggable;
+    use SluggableScopeHelpers;
+    
+    
+    protected $fillable = [ 'user_id','photo_id','title','body' ];
 
     public function user(){
     	return $this->belongsTo('App\User');
     }
 
-    public function category(){
-    	return $this->belongsTo('App\Category');
+    public function categories(){
+    	return $this->belongsToMany('App\Category');
+    }
+    
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
     }
     
     public function photo(){
@@ -30,4 +35,17 @@ class Post extends Model{
         return $this->hasMany('App\Comment');
     }
 
-} 
+
+    /**
+     * Sluggable configuration.
+     *
+     * @var array
+     */
+    public function sluggable() {
+        return [
+            'slug' => [
+                'source' => 'title',
+            ]
+        ];
+    }
+}

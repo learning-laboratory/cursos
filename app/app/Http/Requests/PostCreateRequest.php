@@ -26,8 +26,16 @@ class PostCreateRequest extends FormRequest
         return [
             'title'         => 'required',
             'category_id'   => 'required',
-           //'photo_id'      => 'required',
             'body'          => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required'        => 'Insira o nome.',
+            'category_id.required'  => 'Selecione a(s) categoria(s).',
+            'body.required'         => 'Insira o conteúdo.'
         ];
     }
 }

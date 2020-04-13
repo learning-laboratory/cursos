@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Comment;
 use App\User;
 use App\Photo;
@@ -18,7 +19,7 @@ class PostCommentController extends Controller
      */
     public function index()
     {
-        $comments = Comment::all();
+        $comments = Comment::paginate(8);
         return view('admin.comments.index', compact('comments'));
     }
 
@@ -40,7 +41,6 @@ class PostCommentController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = Auth::user();
 
         $data = [
@@ -52,7 +52,7 @@ class PostCommentController extends Controller
         ];
 
         Comment::create($data);
-        $request->session()->flash('comment_message','Your message has been submitd adn is waiting moderation');
+        $request->session()->flash('comment_message','O seu comentário foi submetido, aguarda aprovação.');
         return redirect()->back();
     }
 
@@ -64,9 +64,9 @@ class PostCommentController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
-        $comments = $post->comments;
-        return view('admin.comments.show',compact('comments'));
+        //$post = Post::findOrFail($id);
+        //$comments = $post->comments;
+        //return view('admin.comments.show',compact('comments'));
     }
 
     /**
@@ -101,9 +101,8 @@ class PostCommentController extends Controller
      */
     public function destroy($id)
     {
-         Comment::findOrFail($id)->delete();
+        Comment::findOrFail($id)->delete();
+        Session::flash('deleted_comment','Comentário removido.');
         return redirect('/admin/comments');
     }
-
 }
-

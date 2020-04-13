@@ -2,59 +2,72 @@
 
 @section('content')
 
-<h1>Edit Users</h1>
+@section('header_section')
+  <div class="col-sm-6">
+    <h1 class="m-0 text-dark">Actualizar usuário</h1>
+  </div><!-- /.col -->
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="/admin">Página inícial</a></li>
+      <li class="breadcrumb-item active">Usuários</li>
+    </ol>
+  </div><!-- /.col -->
+@endsection
 
-@include('includes.form_errors')	
+@include('includes.form_errors')
 
-<div class="col-sm-3">
-	<img src="{{$user->photo ? $user->photo->file : 'http:://placehold.it/400x400'}}" class="img-responsive img-rounded">
+<div class="card card-secondary" style="width: 100%;">
+    <div class="card-header">
+    </div>
+    <div class="container" style="padding: 20px;">
+	    <div class="row">
+			<div class="col-sm-3">
+				<img src="{{$user->photo ? $user->photo->file : '/images/user-big.png'}}" class="img-fluid rounded-circle">
+			</div>
+			<div class="col-sm-9">
+			{!! Form::model($user,['method'=>'PATCH','action'=>['AdminUserController@update',$user->id],'files'=>true]) !!}
+			
+			<div class="form-group">
+				{!! Form::label('name','Nome:') !!}
+				{!! Form::text('name',null,['class'=>'form-control']) !!}
+			</div>
+
+			<div class="form-group">
+				{!! Form::label('email','E-mail:') !!}
+				{!! Form::text('email',null,['class'=>'form-control']) !!}
+			</div>
+
+			<div class="form-group">
+				{!! Form::label('role_id','Função:') !!}
+				{!! Form::select('role_id',[''=>'Selecionar']+$roles,null,['class'=>'form-control custom-select']) !!}
+			</div>
+
+			<div class="form-group">
+				{!! Form::label('is_active','Estado:') !!}
+				{!! Form::select('is_active',array(1=>'Activo',0=>'Inactivo'),0,['class'=>'form-control custom-select']) !!}
+			</div>
+
+	        <div class="form-group">
+	           <div class="custom-file">
+	            	{!! Form::label('photo_id','Foto:',['class'=>'custom-file-label']) !!}
+			        {!! Form::file('photo_id',null,['class'=>'form-control custom-file-input']) !!}       
+	            </div>
+	        </div>
+
+			<div class="form-group">
+				{!! Form::label('password','Palavra-passe:') !!}
+				{!! Form::password('password',['class'=>'form-control']) !!}
+			</div>
+			
+				
+			<div class="form-group">
+				{!! Form::submit('Actualizar',['class'=>'btn btn-primary']) !!}
+			</div>
+			{!! Form::close() !!}
+			</div>
+		</div>
+    </div>
 </div>
-<div class="col-sm-9">
-{!! Form::model($user,['method'=>'PATCH','action'=>['AdminUserController@update',$user->id],'files'=>true]) !!}
-	
-	<div class="form-group">
-		{!! Form::label('name','Name:') !!}
-		{!! Form::text('name',null,['class'=>'form-control']) !!}
-	</div>
 
-	<div class="form-group">
-		{!! Form::label('email','Email:') !!}
-		{!! Form::text('email',null,['class'=>'form-control']) !!}
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('role_id','Role:') !!}
-		{!! Form::select('role_id',[''=>'Choose Options']+$roles,null,['class'=>'form-control']) !!}
-	</div>
-
-	<div class="form-group">
-		{!! Form::label('is_active','Status:') !!}
-		{!! Form::select('is_active',array(1=>'Active',0=>'Not Active'),null,['class'=>'form-control']) !!}
-	</div>
-
-
-    <div class="form-group">
-        {!! Form::label('photo_id','Photo:') !!}
-        {!! Form::file('photo_id',null,['class'=>'form-control']) !!}
-     </div>
-
-	<div class="form-group">
-		{!! Form::label('password','Password:') !!}
-		{!! Form::password('password',['class'=>'form-control']) !!}
-	</div>
-
-	<div class="form-group">
-		{!! Form::submit('Update',['class'=>'btn btn-info']) !!}
-	</div>
-
-{!! Form::close() !!}
-
-{!! Form::open(['method'=>'DELETE','action'=>['AdminUserController@destroy',$user->id]]) !!}
-	<div class="form-group">
-		{!! Form::submit('Delete',['class'=>'btn btn-danger']) !!}
-	</div>
-{!! Form::close() !!}
-
-</div>
 
 @endsection

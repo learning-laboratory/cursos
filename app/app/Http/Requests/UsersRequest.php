@@ -31,4 +31,15 @@ class UsersRequest extends FormRequest
             'password'=>'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required'      => 'Insira o nome.',
+            'email.required'     => 'Insira o e-mail.',
+            'role_id.required'   => 'Selecione a função.',
+            'is_active.required' => 'Selecione o estado.',
+            'password.required'  => 'Insira a palavra-passe.'
+        ];
+    }
 }

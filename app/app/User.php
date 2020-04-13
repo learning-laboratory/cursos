@@ -47,7 +47,7 @@ class User extends Authenticatable
 
 
     public function isAdmin(){
-       if ($this->role->name == 'Administrator' && $this->is_active == 1) {
+       if (strtolower($this->role->name) == strtolower('Administrator') && $this->is_active == 1) {
             return true;
         } 
         return false;
@@ -60,5 +60,13 @@ class User extends Authenticatable
     public function getGravatarAttribute(){
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://www.gravatar.com/avatar/$hash";
+    }
+
+    public function getPhotoProfile(){
+        return $this->photo ? $this->photo->file :"/images/user.jpg";          
+    }
+
+    public function getStatus(){
+         return $this->is_active == 1 ? "Activo" :"Inactivo";
     }
 }

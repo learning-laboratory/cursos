@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\Session;
 
 class AdminCategoriesController extends Controller
 {
@@ -14,7 +15,7 @@ class AdminCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(4);
         return view('admin.categories.index',compact('categories'));
     }
 
@@ -37,6 +38,7 @@ class AdminCategoriesController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
+        Session::flash('created_category','Categória adicionada.');
         return redirect('admin/categories');
     }
 
@@ -73,6 +75,7 @@ class AdminCategoriesController extends Controller
     public function update(Request $request, $id)
     {
         Category::findOrFail($id)->update($request->all());
+        Session::flash('updated_category','Categória actualizada.');
         return redirect('admin/categories');
     }
 
@@ -85,6 +88,7 @@ class AdminCategoriesController extends Controller
     public function destroy($id)
     {
         Category::findOrFail($id)->delete();
+        Session::flash('deleted_category','Categória removida.');
         return redirect('admin/categories');
     }
 }

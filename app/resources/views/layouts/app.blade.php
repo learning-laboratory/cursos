@@ -9,24 +9,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
-    <link rel="stylesheet" type="text/css" href="/css/blog-post.css">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="/css/metisMenu.css">
-    <link rel="stylesheet" type="text/css" href="/css/sb-admin-2.css">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
-
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+      <!-- Ionicons -->
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <!-- icheck bootstrap -->
+      <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+      <!-- Theme style -->
+      <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <!-- Google Font: Source Sans Pro -->
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -85,13 +80,8 @@
             @yield('content')
         </main>
     </div>
-    <script type="text/javascript" src="/js/libs/jquery.js"></script>
-    <script type="text/javascript" src="/js/libs/popper.js"></script>
-    <script type="text/javascript" src="/js/libs/bootstrap.js"></script>
-    <script type="text/javascript" src="/js/libs/metisMenu.js"></script>
-    <script type="text/javascript" src="/js/libs/sb-admin-2.js"></script>
-    <script type="text/javascript" src="/js/libs/script.js"></script>
 
-
+       <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>

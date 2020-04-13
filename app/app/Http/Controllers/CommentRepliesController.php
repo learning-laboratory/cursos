@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\Comment;
 use App\CommentReply;
 use App\User;
@@ -87,6 +88,7 @@ class CommentRepliesController extends Controller
     public function destroy($id)
     {
         CommentReply::findOrFail($id)->delete();
+        Session::flash('deleted_comment_reply','Resposta removida.');
         return redirect()->back();
     }
 
@@ -103,7 +105,7 @@ class CommentRepliesController extends Controller
         ];
 
         CommentReply::create($data);
-        $request->session()->flash('reply_message','Your reply has been submited is waiting moderation');
+        $request->session()->flash('reply_message','O seu comentário foi submetido, aguarda aprovação.');
         return redirect()->back();
     }
 }

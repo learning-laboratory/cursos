@@ -1,0 +1,46 @@
+.destroy,
+.update{
+	cursor: pointer;
+}
+.update:hover{
+	color: #007bff;
+}
+
+.destroy:hover{
+	color: #dc3545;
+}
+.editor .textarea{
+	 width: 100%; 
+	 height: 200px; 
+	 font-size: 14px;
+	 line-height: 18px; 
+	 border: 1px solid #dddddd; 
+	 padding: 10px
+}
+
+.media img{
+	width: 100%;
+	
+}
+
+.media img:hover{
+	cursor: pointer;
+	box-shadow: 2px 2px 2px #007bffab;
+	transition: .8s all;
+}
+.media .trash i{
+	display: none;
+}
+.media .trash:hover i{
+	display: block
+}
+.media .trash i:hover  {
+	color: #dc3545;
+}
+.media .trash i{
+	position: absolute;
+	right: 20px;
+	top: 15px;
+	font-size: 16px;
+	color: white;
+}
