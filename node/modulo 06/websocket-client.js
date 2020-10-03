@@ -1,0 +1,1 @@
+const WS = new WebSocket('ws://localhost:9000');
