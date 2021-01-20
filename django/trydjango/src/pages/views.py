@@ -5,13 +5,14 @@ from django.http import HttpResponse
 def home_view(request, *args, **kwargs):
     print(args, kwargs)
     print(request.user)
-    return HttpResponse(f"<h1>Hello World!</h1>{request.user}")
+    # return HttpResponse(f"<h1>Hello World!</h1>{request.user}")
+    return render(request, "home.html", {})
 
 def contact_view(request, *args, **kwargs):
-    return HttpResponse("<h1>Contact Page!</h1>")
+    return render(request, "contact.html", {})
 
 def about_view(request, *args, **kwargs):
-    return HttpResponse("<h1>About Page!</h1>")
+    return render(request, "about.html", {})
 
 def social_view(request, *args, **kwargs):
-    return HttpResponse("<h1>Social Views!</h1>")
+    return render(request, "social.html", {})
