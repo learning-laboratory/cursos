@@ -108,6 +108,10 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-/bin
-/lib
-pyenv.cfg
+# Visual Studio Code # 
+.vscode/* 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/launch.json 
+!.vscode/extensions.json 
+.history
