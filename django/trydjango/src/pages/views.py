@@ -12,7 +12,12 @@ def contact_view(request, *args, **kwargs):
     return render(request, "contact.html", {})
 
 def about_view(request, *args, **kwargs):
-    return render(request, "about.html", {})
+    context = {
+        'text': 'This is about us',
+        'number': 123,
+        'list': [1,2,3,4,5]
+    }
+    return render(request, "about.html", context)
 
 def social_view(request, *args, **kwargs):
     return render(request, "social.html", {})
