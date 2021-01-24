@@ -8,5 +8,5 @@ class Product(models.Model):
     summary     = models.TextField(blank=True, null=False)
     featured    = models.BooleanField() # null=True, default=True
     
-    # def __str__(self):
-    #     return self.name
+    def __str__(self):
+        return self.name

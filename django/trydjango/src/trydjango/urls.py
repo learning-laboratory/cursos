@@ -26,5 +26,6 @@ urlpatterns = [
     path('about', about_view, name="about"),
     path('social', social_view, name="social"),
 
-    path('product', product_detail_view, name="product_detail")
+    path('product', product_detail_view, name="product_detail"),
+    path('product/create', product_create_view, name="product_create")
 ]
