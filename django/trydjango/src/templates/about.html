@@ -11,7 +11,11 @@
 </p>
 
 {% for item in list %}
+    {% if item == "abc" %}
+    <li><strong>{{forloop.counter}} - {{item}}</strong></li>
+    {% else %}
     <li>{{item}}</li>
+    {% endif %}
 {% endfor %}
 
 {% endblock %}
