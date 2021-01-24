@@ -13,9 +13,10 @@ def contact_view(request, *args, **kwargs):
 
 def about_view(request, *args, **kwargs):
     context = {
-        'abc': 'This is about us',
+        'text': 'this is about us',
         'number': 123,
-        'list': [11,22,33,44,55, "abc"]
+        'list': [11,22,33,44,55, "abc"],
+        'text_html': '<h1>Hello Word!</h1>'
     }
     return render(request, "about.html", context)
 
