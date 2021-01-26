@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="POST">
+    {% comment %} <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form> {% endcomment %}
+    <form method="GET">
+        {% csrf_token %}
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Name">
+        </div>
+        {% comment %} <div>
+            <label>Price:</label>
+            <input type="number" name="price" placeholder="Price">
+        </div>
+        <div>
+            <label>Description:</label>
+            <textarea name="description" rows="5" placeholder="Description"></textarea>
+        </div> {% endcomment %}
         <input type="submit" value="Save">
     </form>
 {% endblock%}
