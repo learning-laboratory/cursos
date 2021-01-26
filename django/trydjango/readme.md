@@ -20,6 +20,10 @@ $ mdkdir folder_project
 $ cd folder_project
 $ python3 -m venv env
 ```
+Or (recommend):
+```sh
+$ virtualenv -p python3
+```
 
 On Windows:
 ```sh
