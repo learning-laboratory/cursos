@@ -28,5 +28,6 @@ urlpatterns = [
     path('social', social_view, name="social"),
 
     path('product', product_detail_view, name="product_detail"),
-    path('product/create', product_create_view, name="product_create")
+    #path('product/create', product_create_view, name="product_create")
+    path('product/create', render_initial_data, name="product_create")
 ]
