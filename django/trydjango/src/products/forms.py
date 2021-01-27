@@ -55,10 +55,6 @@ class ProductForm(forms.ModelForm):
             raise forms.ValidationError("The minimum price is 10.00..")
         return price
 
-    # def clean_description(self, *args, **kwargs):
-
-    # def clean_price(self, *args, **kwargs):
-
 
 class RawProductForm(forms.Form):
 
