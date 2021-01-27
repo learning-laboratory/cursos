@@ -29,4 +29,5 @@ urlpatterns = [
 
     path('product', product_detail_view, name="product_detail"),
     path('product/create', product_create_view, name="product_create")
+    path('product/render', render_initial_data, name="product_create")
 ]

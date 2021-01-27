@@ -55,34 +55,30 @@ class ProductForm(forms.ModelForm):
             raise forms.ValidationError("The minimum price is 10.00..")
         return price
 
-    # def clean_description(self, *args, **kwargs):
 
-    # def clean_price(self, *args, **kwargs):
+class RawProductForm(forms.Form):
 
+    name = forms.CharField(
+        label="Name:",
+        widget = forms.TextInput(
+            attrs = {
+                "placeholder": "Title Here!",
+            }
+        )
+    )
 
-# class RawProductForm(forms.Form):
+    description = forms.CharField(
+        label="Description:", 
+        required=False,
+        widget = forms.Textarea(
+            attrs = {
+                "placeholder": "Descritptio Here!",
+                "class":"form-control",
+                "id":"id-class",
+                "rows": 5,
+                "cols": 16
+            }
+        )
 
-#     name = forms.CharField(
-#         label="Name:",
-#         widget = forms.TextInput(
-#             attrs = {
-#                 "placeholder": "Title Here!",
-#             }
-#         )
-#     )
-
-#     description = forms.CharField(
-#         label="Description:", 
-#         required=False,
-#         widget = forms.Textarea(
-#             attrs = {
-#                 "placeholder": "Descritptio Here!",
-#                 "class":"form-control",
-#                 "id":"id-class",
-#                 "rows": 5,
-#                 "cols": 16
-#             }
-#         )
-
-#     )
-#     price = forms.DecimalField(label="Price:", initial=10.00)
+    )
+    price = forms.DecimalField(label="Price:", initial=10.00)
