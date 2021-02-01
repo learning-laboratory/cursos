@@ -2,7 +2,6 @@
 
 {% block content %}
     {% for instance in products  %}
-        <li>{{instance.name}}</li>
+        <li><a href="{{ instance.get_absolute_url }}">{{instance.name}}</a></li>
     {% endfor %}
 {% endblock%}
-s
