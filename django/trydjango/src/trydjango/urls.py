@@ -31,6 +31,7 @@ urlpatterns = [
     path('product/create', product_create_view, name="product_create"),
     path('product/render', render_initial_data, name="product_render"),
     path('product/<int:product_id>/', dynamic_lookup_view, name="product"),
-    path('product/<int:product_id>/delete', product_delete_view, name="product_delete")
+    path('product/<int:product_id>/delete', product_delete_view, name="product_delete"),
+    path('products/', product_list_view, name="product_list")
 
 ]

@@ -21,7 +21,6 @@ def product_create_view(request):
     return render(request, "products/product_create.html", context)
 
 # def product_create_view(request):
-
 #     print(request.GET['name'])
 #     print(request.POST.get("name"))
 #     context = {}
@@ -72,3 +71,10 @@ def product_delete_view(request, product_id):
        "product": product 
     }
     return render(request, "products/product_delete.html", context)
+
+def product_list_view(request):
+    products = Product.objects.all()
+    context = {
+       "products": products
+    }
+    return render(request, "products/product_list.html", context)
