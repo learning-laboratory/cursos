@@ -28,6 +28,8 @@ urlpatterns = [
     path('social', social_view, name="social"),
 
     path('product', product_detail_view, name="product_detail"),
-    path('product/create', product_create_view, name="product_create")
-    path('product/render', render_initial_data, name="product_create")
+    path('product/create', product_create_view, name="product_create"),
+    path('product/render', render_initial_data, name="product_render"),
+    path('product/<int:product_id>/', dynamic_lookup_view, name="product")
+
 ]

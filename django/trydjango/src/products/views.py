@@ -3,7 +3,6 @@ from .models import Product
 from .forms import ProductForm, RawProductForm
 
 def product_create_view(request):
-
     form = RawProductForm()
     if request.method == "POST":
         form = RawProductForm(request.POST)
@@ -55,5 +54,12 @@ def product_detail_view(request):
     product = Product.objects.get(id=1)
     context = {
         "product": product
+    }
+    return render(request, "products/product_detail.html", context)
+
+def dynamic_lookup_view(request, product_id):
+    product = Product.objects.get(id = 1)
+    context = {
+       "product": product 
     }
     return render(request, "products/product_detail.html", context)
