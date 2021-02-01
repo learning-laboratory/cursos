@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Product
 from .forms import ProductForm, RawProductForm
 
@@ -63,3 +63,12 @@ def dynamic_lookup_view(request, product_id):
        "product": product 
     }
     return render(request, "products/product_detail.html", context)
+
+def product_delete_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == "POST":
+        product.delete()
+    context = {
+       "product": product 
+    }
+    return render(request, "products/product_delete.html", context)
