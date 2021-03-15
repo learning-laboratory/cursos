@@ -41,7 +41,7 @@ $ source env/bin/activate
 
 On Windows:
 ```sh
-$ .\env\Scripts\activate
+$ .\env\Scripts\activate.bat
 ```
 You can confirm you’re in the virtual environment by checking the location of your Python interpreter, it should point to the env directory.
 
