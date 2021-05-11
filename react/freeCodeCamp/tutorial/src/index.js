@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import ReactDom from 'react-dom'
 import './index.css'
 
@@ -15,46 +15,28 @@ const books = [
   }
 ]
 
-const names = ['A','B','C','D']
-const newNames = names.map((name) => {
-  return <h1>{name}</h1>
-})
-console.log(newNames)
-
 function BookList(){
   return (
       <section className="booklist">
-        {newNames}
+        {
+          books.map((book)=>{
+            return (<Book book={book}/>)
+          })
+        }
       </section>
   )
 }
 
 const Book = (props) => {
-  const {img, title, author} = props
-  return <article className="book">
-    <img src={img} alt="" />
-    <h3>{title}</h3>
-    <h4>{author}</h4>
-  </article>
-} 
-
-
-// const Book = (img, title, author) => {
-//   return <article className="book">
-//     <img src={img} alt="" />
-//     <h3>{title}</h3>
-//     <h4>{author}</h4>
-//   </article>
-// }
-
-
-// const Book = (props) => {
-//   return <article className="book">
-//     <img src={props.img} alt="" />
-//     <h3>{props.title}</h3>
-//     <h4>{props.author}</h4>
-//   </article>
-// }
+  const {img, title, author} = props.book
+  return (
+    <article className="book">
+      <img src={img} alt=""/>
+      <h1>{title}</h1>
+      <h4>{author}</h4>
+    </article>
+  )
+}
 
 ReactDom.render(
   <BookList/>,
