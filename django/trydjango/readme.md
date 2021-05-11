@@ -14,15 +14,15 @@ py -m pip install --user virtualenv
 
 ### Creating a virtual environment
 
-On Linux and macOS:
+On Linux and macOS(recommend):
+```sh
+$ virtualenv -p python3 .
+```
+Or:
 ```sh
 $ mdkdir folder_project
 $ cd folder_project
 $ python3 -m venv env
-```
-Or (recommend):
-```sh
-$ virtualenv -p python3
 ```
 
 On Windows:
@@ -41,7 +41,7 @@ $ source env/bin/activate
 
 On Windows:
 ```sh
-$ .\env\Scripts\activate
+$ .\env\Scripts\activate.bat
 ```
 You can confirm you’re in the virtual environment by checking the location of your Python interpreter, it should point to the env directory.
 
@@ -63,3 +63,23 @@ $ where python
 $ deactivate
 ```
 View more detail here: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+
+# Install Django
+
+On Linux and macOS:
+```sh
+$ pip3 install django
+```
+
+On Windows:
+```sh
+$ pip install django
+```
+
+# Start a Blank Django Project
+
+```sh
+$ django-admin startproject <folder_project> .
+```
+
+
