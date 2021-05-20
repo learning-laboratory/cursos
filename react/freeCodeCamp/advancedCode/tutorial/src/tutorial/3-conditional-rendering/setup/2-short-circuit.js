@@ -19,6 +19,7 @@ const ShortCircuit = () => {
       <h2>{!text && 'Hello Word'}</h2>
       <h2>{text && 'Hello Word, Too'}</h2>
       <h2>{isError && 'Error page'}</h2>
+      <h2>{isError ? 'Error page' :  "No error"}</h2>
     </>
   )
 }
